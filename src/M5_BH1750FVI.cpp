@@ -17,12 +17,10 @@ void M5_BH1750FVI::writeBytes(uint8_t *buffer, size_t size) {
 }
 
 void M5_BH1750FVI::readBytes(uint8_t *buffer, size_t size) {
-    _wire->beginTransmission(_addr);
     _wire->requestFrom(_addr, size);
     for(uint16_t i = 0; i < size; i++){
         buffer[i] = _wire->read();
     }
-    _wire->endTransmission();
 }
 
 uint16_t M5_BH1750FVI::getLUX() {
