@@ -35,7 +35,7 @@ void M5_BH1750FVI::begin(TwoWire *wire, uint8_t sda, uint8_t scl,
     _sda  = sda;
     _scl  = scl;
     _freq = freq;
-    _wire->begin(_sda, _scl, _freq);
+    _wire->begin(DEVICE_I2C_ADDR, _sda, _scl, _freq);
     powerOn();
 }
 

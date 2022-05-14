@@ -33,6 +33,7 @@ class M5_BH1750FVI {
     M5_BH1750FVI(uint8_t addr = 0x23);
     void begin(TwoWire *wire = &Wire, uint8_t sda = SDA, uint8_t scl = SCL,
                uint32_t freq = 4000000UL);
+
     void powerOn();
     void powerOff();
     void powerReset();
