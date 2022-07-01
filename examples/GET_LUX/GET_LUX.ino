@@ -1,8 +1,8 @@
 /*
 *******************************************************************************
 * Copyright (c) 2022 by M5Stack
-*                  Equipped with M5Core sample source code
-*                          配套  M5Core 示例源代码
+*                  Equipped with M5StickC sample source code
+*                          配套  M5StickC 示例源代码
 * Visit  for more information: http://docs.m5stack.com/en/hat/hat_dlight
 * 获取更多资料请访问: http://docs.m5stack.com/zh_CN/hat/hat_dlight
 *
