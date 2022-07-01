@@ -6,7 +6,7 @@ M5Stack-**HAT DLight** driver library, based on BH1750FVI sensor to achieve ambi
 
 ## Related Link
 
-[Docment & Datasheet](https://docs.m5stack.com/en/hat/hat_dlight)
+[Document & Datasheet](https://docs.m5stack.com/en/hat/hat_dlight)
 
 ## License
 
