@@ -2,7 +2,7 @@
 
 ## Overview
 
-M5Stack-**HAT DLight** driver library, based on BH1750FVI sensor to achieve ambient light detection.
+M5Stack-**Unit&Hat DLight** driver library, based on BH1750FVI sensor to achieve ambient light detection.
 
 ## Related Link
 
