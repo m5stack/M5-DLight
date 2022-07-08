@@ -6,7 +6,7 @@
 * Visit for more information: http://docs.m5stack.com/en/hat/hat_dlight
 * 获取更多资料请访问: http://docs.m5stack.com/zh_CN/hat/hat_dlight
 *
-* Product: DLight.
+* Product: Unit&Hat DLight.
 * Date: 2022/07/7
 *******************************************************************************
   Measure and output light intensity on screen and serial port
