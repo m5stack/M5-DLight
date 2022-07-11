@@ -24,14 +24,13 @@ uint16_t lux;
 void setup() {
     M5.begin();
     M5.Lcd.setRotation(1);
-    Wire.begin(0, 26);  // HAT DLight
-    // Wire.begin(21, 22);  // Unit DLight
     canvas.setTextColor(GREEN);
     canvas.setTextDatum(MC_DATUM);
     canvas.setTextSize(2);
     canvas.createSprite(160, 80);
     Serial.println("Sensor begin.....");
-    sensor.begin();
+    // sensor.begin(&Wire, 0, 26);   // HAT DLight
+    sensor.begin(&Wire, 32, 33);  // Unit DLight
 
     // CONTINUOUSLY_H_RESOLUTION_MODE
     // CONTINUOUSLY_H_RESOLUTION_MODE2
