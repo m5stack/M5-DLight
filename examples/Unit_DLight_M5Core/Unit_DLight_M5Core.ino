@@ -8,7 +8,7 @@ information: https://docs.m5stack.com/en/unit/dlight
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/dlight
 *
 * Describe: 数字环境光检测传感器BH1750FVI
-* Date: 2022/7/7
+* Date: 2022/7/20
 *******************************************************************************
   Please connect the sensor to port A (22, 21), the Lux value will be displayed
   on the display after successful initialization 请将传感器连接至端口A(22、21),
@@ -26,7 +26,7 @@ M5_DLight sensor;
 uint16_t lux;
 
 void setup() {
-    M5.begin();
+    M5.begin(true, false, true, true);
     display.begin();
     canvas.setTextDatum(MC_DATUM);
     canvas.setColorDepth(1);
