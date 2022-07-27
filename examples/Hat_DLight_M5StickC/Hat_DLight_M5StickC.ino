@@ -6,8 +6,8 @@
 * Visit for more information: http://docs.m5stack.com/en/hat/hat_dlight
 * 获取更多资料请访问: http://docs.m5stack.com/zh_CN/hat/hat_dlight
 *
-* Product: Unit&Hat DLight.
-* Date: 2022/07/20
+* Product: Hat DLight.
+* Date: 2022/07/27
 *******************************************************************************
   Measure and output light intensity on screen and serial port
   测量并在屏幕和串口输出光照强度
@@ -23,15 +23,13 @@ uint16_t lux;
 
 void setup() {
     M5.begin();
-    M5.Lcd.setRotation(1);
-    Wire.begin(32, 33);
+    M5.Lcd.setRotation(3);
     canvas.setTextColor(GREEN);
     canvas.setTextDatum(MC_DATUM);
     canvas.setTextSize(2);
     canvas.createSprite(160, 80);
     Serial.println("Sensor begin.....");
-    // sensor.begin(&Wire, 0, 26);   // HAT DLight
-    sensor.begin(&Wire, 32, 33);  // Unit DLight
+    sensor.begin(&Wire, 0, 26);  // HAT DLight
 
     // CONTINUOUSLY_H_RESOLUTION_MODE
     // CONTINUOUSLY_H_RESOLUTION_MODE2

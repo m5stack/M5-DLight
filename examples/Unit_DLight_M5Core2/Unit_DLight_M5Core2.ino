@@ -1,20 +1,20 @@
 /*
 *******************************************************************************
 * Copyright (c) 2022 by M5Stack
-*                  Equipped with M5Core sample source code
-*                          配套  M5Core 示例源代码
+*                  Equipped with M5Core2 sample source code
+*                          配套  M5Core2 示例源代码
 * Visit for more information: https://docs.m5stack.com/en/unit/dlight
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/dlight
 *
 * Product: Unit DLight
 * Date: 2022/7/27
 *******************************************************************************
-  Please connect the sensor to port A (22, 21), the Lux value will be displayed
-  on the display after successful initialization 请将传感器连接至端口A(22、21),
+  Please connect the sensor to port A (32,33), the Lux value will be displayed
+  on the display after successful initialization 请将传感器连接至端口A(32,33),
   成功初始化后显示屏上将显示Lux数值
 */
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 #include <M5GFX.h>
 #include <M5_DLight.h>
 

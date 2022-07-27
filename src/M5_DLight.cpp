@@ -10,7 +10,7 @@ void M5_DLight::begin(TwoWire *wire, uint8_t sda, uint8_t scl, uint32_t freq) {
     _sda  = sda;
     _scl  = scl;
     _freq = freq;
-    _wire->begin(DEVICE_I2C_ADDR, _sda, _scl, _freq);
+    _wire->begin((int)_sda, (int)_scl, _freq);
     powerOn();
 }
 
