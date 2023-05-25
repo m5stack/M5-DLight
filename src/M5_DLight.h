@@ -4,7 +4,7 @@
  *
  * @Links [Unit DLight](https://docs.m5stack.com/en/unit/dlight)
  * @Links [HAT DLight](https://docs.m5stack.com/en/hat/hat_dlight)
- * @version  V0.0.2
+ * @version  V0.0.3
  * @date  2022-07-27
  */
 #ifndef _M5_DLIGHT_H_
