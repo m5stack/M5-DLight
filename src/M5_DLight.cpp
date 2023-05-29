@@ -43,7 +43,7 @@ uint16_t M5_DLight::getLUX() {
     uint8_t buffer[2];
     readBytes(buffer, 2);
     lux = buffer[0] << 8 | buffer[1];
-    return lux;
+    return lux / 1.2;
 }
 
 /*! @brief Turn on the power.*/

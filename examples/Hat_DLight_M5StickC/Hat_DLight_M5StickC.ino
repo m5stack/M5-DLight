@@ -7,27 +7,32 @@
 * 获取更多资料请访问: http://docs.m5stack.com/zh_CN/hat/hat_dlight
 *
 * Product: Hat DLight.
-* Date: 2022/07/27
+* Date: 2023/05/29
 *******************************************************************************
   Measure and output light intensity on screen and serial port
   测量并在屏幕和串口输出光照强度
 */
 
 #include <M5StickC.h>
+#include <M5GFX.h>
 #include <M5_DLight.h>
 
-TFT_eSprite canvas(&M5.Lcd);
+M5GFX display;
+M5Canvas canvas(&display);
 
 M5_DLight sensor;
 uint16_t lux;
 
 void setup() {
     M5.begin();
-    M5.Lcd.setRotation(3);
-    canvas.setTextColor(GREEN);
+    display.begin();
     canvas.setTextDatum(MC_DATUM);
-    canvas.setTextSize(2);
-    canvas.createSprite(160, 80);
+    canvas.setColorDepth(1);
+    canvas.setFont(&fonts::Orbitron_Light_24);
+    canvas.setTextSize(1);
+    canvas.setRotation(3);
+    canvas.createSprite(display.width(), display.height());
+    canvas.setPaletteColor(1, ORANGE);
     Serial.println("Sensor begin.....");
     sensor.begin(&Wire, 0, 26);  // HAT DLight
 
