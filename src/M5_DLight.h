@@ -34,15 +34,15 @@ private:
     uint8_t _scl;
     uint32_t _freq;
     uint8_t _addr;
-    void writeByte(byte cmd);
+    bool writeByte(byte cmd);
     void writeBytes(uint8_t *buffer, size_t size);
     void readBytes(uint8_t *buffer, size_t size);
 
 public:
     M5_DLight(uint8_t addr = 0x23);
-    void begin(TwoWire *wire = &Wire, uint8_t sda = SDA, uint8_t scl = SCL, uint32_t freq = 400000UL);
+    bool begin(TwoWire *wire = &Wire, uint8_t sda = SDA, uint8_t scl = SCL, uint32_t freq = 400000UL);
 
-    void powerOn();
+    bool powerOn();
     void powerOff();
     void setMode(byte mode);
     uint16_t getLUX();

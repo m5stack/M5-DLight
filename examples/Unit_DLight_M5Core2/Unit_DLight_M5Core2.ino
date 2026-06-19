@@ -7,7 +7,7 @@
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/dlight
 *
 * Product: Unit DLight
-* Date: 2022/7/27
+* Date: 2026/04/21
 *******************************************************************************
   Please connect the sensor to port A (32,33), the Lux value will be displayed
   on the display after successful initialization 请将传感器连接至端口A(32,33),
@@ -22,6 +22,7 @@ M5GFX display;
 M5Canvas canvas(&display);
 
 M5_DLight sensor;
+bool sensorPresent = false;
 uint16_t lux;
 
 void setup() {
@@ -34,7 +35,15 @@ void setup() {
     canvas.createSprite(display.width(), display.height());
     canvas.setPaletteColor(1, ORANGE);
     Serial.println("Sensor begin.....");
-    sensor.begin();
+    sensorPresent = sensor.begin();
+
+    if (!sensorPresent) {
+      Serial.println("Sensor not found");
+      canvas.fillSprite(BLACK);
+      canvas.drawString("Sensor not found", 160, 120);
+      canvas.pushSprite(0, 0);
+      return;
+    }
 
     // CONTINUOUSLY_H_RESOLUTION_MODE
     // CONTINUOUSLY_H_RESOLUTION_MODE2
@@ -48,6 +57,11 @@ void setup() {
 char info[40];
 
 void loop() {
+  if (!sensorPresent) {
+    delay(100);
+    return;
+  }
+
     lux = sensor.getLUX();
     sprintf(info, "lux: %d", lux);
     canvas.fillSprite(BLACK);

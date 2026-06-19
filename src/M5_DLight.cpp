@@ -6,22 +6,22 @@ M5_DLight::M5_DLight(uint8_t addr)
 }
 
 /*! @brief Initialize the EXTIO2.*/
-void M5_DLight::begin(TwoWire *wire, uint8_t sda, uint8_t scl, uint32_t freq)
+bool M5_DLight::begin(TwoWire *wire, uint8_t sda, uint8_t scl, uint32_t freq)
 {
     _wire = wire;
     _sda  = sda;
     _scl  = scl;
     _freq = freq;
     _wire->begin((int)_sda, (int)_scl, _freq);
-    powerOn();
+    return powerOn();
 }
 
 /*! @brief Write data to the register address. */
-void M5_DLight::writeByte(byte cmd)
+bool M5_DLight::writeByte(byte cmd)
 {
     _wire->beginTransmission(_addr);
     _wire->write(cmd);
-    _wire->endTransmission();
+    return _wire->endTransmission() == 0;
 }
 
 /*! @brief Write the specified length of data to the register.*/
@@ -53,9 +53,9 @@ uint16_t M5_DLight::getLUX()
 }
 
 /*! @brief Turn on the power.*/
-void M5_DLight::powerOn()
+bool M5_DLight::powerOn()
 {
-    writeByte(POWER_ON);
+    return writeByte(POWER_ON);
 }
 
 /*! @brief Turn off the power.*/

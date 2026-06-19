@@ -7,7 +7,7 @@
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/dlight
 *
 * Product: Unit DLight
-* Date: 2023/05/29
+* Date: 2026/04/21
 *******************************************************************************
   Please connect the sensor to port, the Lux value will be output
   on the serial after successful initialization
@@ -18,12 +18,19 @@
 #include <M5_DLight.h>
 
 M5_DLight sensor;
+bool sensorPresent = false;
 uint16_t lux;
 
 void setup() {
     M5.begin(true, true, true);
     Serial.println("Sensor begin.....");
-    sensor.begin();
+  sensorPresent = sensor.begin();
+
+  if (!sensorPresent) {
+    Serial.println("Sensor not found");
+    M5.dis.fillpix(0xff0000);
+    return;
+  }
 
     // CONTINUOUSLY_H_RESOLUTION_MODE
     // CONTINUOUSLY_H_RESOLUTION_MODE2
@@ -35,6 +42,11 @@ void setup() {
 }
 
 void loop() {
+  if (!sensorPresent) {
+    delay(200);
+    return;
+  }
+
     M5.dis.fillpix(0x00ff00);
     lux = sensor.getLUX();
     Serial.printf("lux: %d\n", lux);
