@@ -7,23 +7,34 @@
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/dlight
 *
 * Product: Unit DLight
-* Date: 2023/05/29
+* Date: 2026/7/17
 *******************************************************************************
   Please connect the sensor to port, the Lux value will be output
   on the serial after successful initialization
   请将传感器连接至端口, 成功初始化后串口上将输出Lux数值
 */
 
-#include <M5Atom.h>
+#include <M5Unified.h>
 #include <M5_DLight.h>
+// Install the Adafruit NeoPixel library:
+// https://github.com/adafruit/Adafruit_NeoPixel
+#include <Adafruit_NeoPixel.h>
+
+#define LED_PIN 27
+#define NUM_LEDS 25
+
+Adafruit_NeoPixel strip(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 M5_DLight sensor;
 uint16_t lux;
 
-void setup() {
-    M5.begin(true, true, true);
+void setup()
+{
+    M5.begin();
+    Serial.begin(115200);
     Serial.println("Sensor begin.....");
-    sensor.begin();
+    sensor.begin(&Wire, 26, 32);
+    strip.begin();
 
     // CONTINUOUSLY_H_RESOLUTION_MODE
     // CONTINUOUSLY_H_RESOLUTION_MODE2
@@ -34,8 +45,13 @@ void setup() {
     sensor.setMode(CONTINUOUSLY_H_RESOLUTION_MODE);
 }
 
-void loop() {
-    M5.dis.fillpix(0x00ff00);
+void loop()
+{
+    for (char i = 0; i <= NUM_LEDS; i++)
+    {
+        strip.setPixelColor(i, strip.Color(0, 255, 0));
+    }
+    strip.show();
     lux = sensor.getLUX();
     Serial.printf("lux: %d\n", lux);
     delay(200);
