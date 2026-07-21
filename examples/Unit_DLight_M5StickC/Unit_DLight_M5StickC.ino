@@ -7,33 +7,31 @@
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/dlight
 *
 * Product: Unit DLight
-* Date: 2022/7/27
+* Date: 2026/7/17
 *******************************************************************************
   Please connect the sensor to port, the Lux value will be displayed
   on the display after successful initialization 请将传感器连接至端口,
   成功初始化后显示屏上将显示Lux数值
 */
 
-#include <M5StickC.h>
-#include <M5GFX.h>
+#include <M5Unified.h>
 #include <M5_DLight.h>
 
-M5GFX display;
-M5Canvas canvas(&display);
+M5Canvas canvas(&M5.Display);
 
 M5_DLight sensor;
 uint16_t lux;
 
 void setup() {
     M5.begin();
-    display.begin();
+    M5.Display.setRotation(3);
     canvas.setTextDatum(MC_DATUM);
     canvas.setColorDepth(1);
     canvas.setFont(&fonts::Orbitron_Light_24);
     canvas.setTextSize(1);
-    canvas.setRotation(3);
-    canvas.createSprite(display.width(), display.height());
+    canvas.createSprite(M5.Display.width(), M5.Display.height());
     canvas.setPaletteColor(1, ORANGE);
+    Serial.begin(115200);
     Serial.println("Sensor begin.....");
     sensor.begin();
 
